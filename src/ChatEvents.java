@@ -12,16 +12,22 @@ public class ChatEvents implements Listener {
 
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent event) {
+		
+		Player player = event.getPlayer();
 
-		for (Player onlineplayers : Bukkit.getServer().getOnlinePlayers()) { // Loop through online players
+		for (Player onlineplayers : Bukkit.getServer().getOnlinePlayers()) {
 
-			if (event.getMessage().contains(onlineplayers.getName())) { // Check if message contains player name
+			if (event.getMessage().contains("@" + onlineplayers.getName())) {
 
-				String msg = event.getMessage().replace(onlineplayers.getName(), ChatColor.BLUE + onlineplayers.getName());
-				event.setMessage(msg); // Replace original message
+				String msg = event.getMessage().replace("@" + onlineplayers.getName(), ChatColor.AQUA + onlineplayers.getName() + ChatColor.RESET);
+				event.setMessage(msg);
 			} else {
 				
-				System.out.println("[-]");
+				System.out.println("Hey " + player.getName() + "! That's a random message.");
+			}
+			
+			if (PingCommand.enabled(player, true)) {
+				return true;
 			}
 		}
 	}
