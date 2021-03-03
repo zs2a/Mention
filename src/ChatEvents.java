@@ -1,33 +1,38 @@
 package dev.stan.plugin;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import dev.stan.plugin.commands.PingToggleCMD;
 import net.md_5.bungee.api.ChatColor;
 
 public class ChatEvents implements Listener {
 
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent event) {
-		
 		Player player = event.getPlayer();
+		
+		
 
-		for (Player onlineplayers : Bukkit.getServer().getOnlinePlayers()) {
+		for (Player pinged : Bukkit.getServer().getOnlinePlayers()) { // Loop through all players
 
-			if (event.getMessage().contains("@" + onlineplayers.getName())) {
+			if (event.getMessage().contains("@" + pinged.getName())) { // Check if message contains a player.
 
-				String msg = event.getMessage().replace("@" + onlineplayers.getName(), ChatColor.AQUA + onlineplayers.getName() + ChatColor.RESET);
-				event.setMessage(msg);
-			} else {
-				
-				System.out.println("Hey " + player.getName() + "! That's a random message.");
-			}
-			
-			if (PingCommand.enabled(player, true)) {
-				return true;
+
+				if (PingToggleCMD.enabled.get(player)) { // Check if player has turned on pings
+
+					String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.AQUA + pinged.getName() + ChatColor.RESET);
+					event.setMessage(msg);
+
+					pinged.getWorld().playSound(pinged.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 3.0F, 0.5F); // Play sound at player pos
+
+					return;
+				}
+
 			}
 		}
 	}
