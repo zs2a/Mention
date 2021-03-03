@@ -24,10 +24,23 @@ public class ChatEvents implements Listener {
 
 
 				if (PingToggleCMD.enabled.get(player)) { // Check if player has turned on pings
-
-					String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.AQUA + pinged.getName() + ChatColor.RESET);
-					event.setMessage(msg);
-
+					
+					if (pinged.hasPermission("ping.red")) {
+						
+						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.RED + pinged.getName() + ChatColor.RESET);
+						event.setMessage(msg);
+					}
+					
+					else if (pinged.hasPermission("ping.yellow")) {
+						
+						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.YELLOW + pinged.getName() + ChatColor.RESET);
+						event.setMessage(msg);
+					} else {
+						
+						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.GREEN + pinged.getName() + ChatColor.RESET);
+						event.setMessage(msg);
+					}
+					
 					pinged.getWorld().playSound(pinged.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 3.0F, 0.5F); // Play sound at player pos
 
 					return;
