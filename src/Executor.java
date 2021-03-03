@@ -9,7 +9,8 @@ import dev.stan.plugin.commands.PingToggleCMD;
 
 public class Executor extends JavaPlugin implements Listener {
 	
-	public static String prefix = (ChatColor.DARK_AQUA + "[" + ChatColor.GREEN + "Mention" + ChatColor.DARK_AQUA + "] ");
+	public static String prefix = ChatColor.DARK_AQUA + "[" + ChatColor.GREEN + "Mention" + ChatColor.DARK_AQUA + "] ";
+	public static String noperms = Executor.prefix + ChatColor.RED + "You do not have permission to perform this command.";
 	
 	// On enable method, execute as soon as plugin is enabled.
 	
