@@ -48,6 +48,8 @@ public class PingToggleCMD implements CommandExecutor {
 					if (player.hasPermission("mention.command")) {
 						
 						togglePluginState(player);
+					} else {
+						player.sendMessage(Executor.noperms);
 					}
 					
 				}
