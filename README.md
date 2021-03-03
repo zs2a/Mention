@@ -15,7 +15,7 @@ This can be helpful for staff members or other busy players on your server, this
  
 ### Upcoming Features
 ***This list is sorted by priority***
-- Permission system with many nodes
+- Staff ping with permissions.
 - Spam filter
 - Configurable messages in a separate file
 - Blacklist command
