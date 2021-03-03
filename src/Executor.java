@@ -10,7 +10,7 @@ public class Executor extends JavaPlugin implements Listener {
 	public void onEnable() {
 		
 		getLogger().info("Mention Plugin enabled.");
-		getCommand("ping").setExecutor(new PingCommand()); 		// Create new instance of Commands class and point to executor
-		getServer().getPluginManager().registerEvents(new ChatEvents(), this); 		// Create new instance of Events class and point to executor
+		getCommand("ping").setExecutor(new PingCommand()); / Create new instance of Commands class and point to executor
+		getServer().getPluginManager().registerEvents(new ChatEvents(), this); // Create new instance of Events class and point to executor
 	}
 }
