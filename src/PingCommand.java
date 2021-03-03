@@ -18,7 +18,7 @@ public class PingCommand implements CommandExecutor {
 		if (enabled.containsKey(player)) {
 			if (enabled.get(player)) {
 				enabled.put(player, false);
-				player.sendMessage("Pings disabled.");
+				player.sendMessage(ChatColor.GREEN + "Pings disabled.");
 			} else {
 				enabled.put(player, true);
 				player.sendMessage(ChatColor.GREEN + "Pings enabled.");
@@ -35,12 +35,22 @@ public class PingCommand implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
 		if (cmd.getName().equalsIgnoreCase("ping")) {
+			
+			Player player = (Player) sender;
+			
+			if (player.hasPermission("mention.command"))
 
 			if (sender instanceof Player) {
 
-				Player player = (Player) sender;
 				togglePluginState(player);
-				return true;
+
+				if (args.length == 1) {
+
+					if (args[0].equalsIgnoreCase("help")) {
+
+						player.sendMessage(ChatColor.GREEN + "Use the " + ChatColor.DARK_GREEN + "/ping " + ChatColor.GREEN + "command to toggle wether you want to ping and be pinged.");
+					}
+				}
 
 			}
 
