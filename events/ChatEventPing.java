@@ -1,4 +1,4 @@
-package dev.stan.plugin;
+package dev.stan.plugin.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Sound;
@@ -10,7 +10,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 import dev.stan.plugin.commands.PingToggleCMD;
 import net.md_5.bungee.api.ChatColor;
 
-public class ChatEvents implements Listener {
+public class ChatEventPing implements Listener {
 
 	@EventHandler
 	public void onChat(AsyncPlayerChatEvent event) {
