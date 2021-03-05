@@ -20,12 +20,12 @@ public class ChatEventStaff implements Listener {
 
 		for (Player pinged : Bukkit.getServer().getOnlinePlayers()) { // Loop through all players
 
-			if (event.getMessage().contains("@" + pinged.getName())) { // Check if message contains a player.
+			if (event.getMessage().contains("@" + "staff")) { // Check if message contains a player.
 
 
 				if (PingToggleCMD.enabled.get(player)) { // Check if player has turned on pings
 					
-					if (pinged.hasPermission("ping.staff")) {
+					if (pinged.hasPermission("mention.staff")) {
 						
 						
 						String msg = event.getMessage().replace(pinged.getName(), ChatColor.RED + pinged.getName() + ChatColor.RESET);
