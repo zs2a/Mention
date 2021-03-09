@@ -14,42 +14,47 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class PingToggleCMD implements CommandExecutor {
 
+	// HashMap defines if the player has pings enahbled
 	public static HashMap<Player, Boolean> enabled = new HashMap<Player, Boolean>();
-
+	
+	// Send message if HashMap change and toggle pings
 	public void togglePluginState(Player player) {
 
 		if (enabled.containsKey(player)) {
 			if (enabled.get(player)) {
 				enabled.put(player, false);
 				player.sendMessage(Executor.prefix + ChatColor.RED + "Pings disabled.");
+				
 			} else {
+				
 				enabled.put(player, true);
 				player.sendMessage(Executor.prefix + ChatColor.GREEN + "Pings enabled.");
-
+				
 			}
+			
 		} else {
 			enabled.put(player, false); // If you want plugin enabled by default change this value to false.
 			player.sendMessage(Executor.prefix + ChatColor.RED + "Pings disabled.");
 		}
-
 	}
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-		if (cmd.getName().equalsIgnoreCase("ping")) {
+		if (cmd.getName().equalsIgnoreCase("ping")) { // Check for command registered in Executor.java
 			
-			if (sender instanceof Player) {
+			if (sender instanceof Player) { // Ensure console is not pinging
 				
-							Player player = (Player) sender;
+				Player player = (Player) sender;
 				
 				if (args.length == 0) {
 					
-					if (player.hasPermission("mention.command")) {
+					if (player.hasPermission("mention.command")) { // Check for permission
 						
-						togglePluginState(player);
+						togglePluginState(player); // Call function, toggle pings
+						
 					} else {
-						player.sendMessage(Executor.noperms);
+						player.sendMessage(Executor.noperms); // No permission message
 					}
 					
 				}
