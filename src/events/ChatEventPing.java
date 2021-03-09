@@ -12,32 +12,27 @@ import net.md_5.bungee.api.ChatColor;
 
 public class ChatEventPing implements Listener {
 
-	@EventHandler
+	@EventHandler // Handle event(s)
 	public void onChat(AsyncPlayerChatEvent event) {
-		Player player = event.getPlayer();
 		
-		
+		Player player = event.getPlayer(); // Define player variable
 
 		for (Player pinged : Bukkit.getServer().getOnlinePlayers()) { // Loop through all players
 
 			if (event.getMessage().contains("@" + pinged.getName())) { // Check if message contains a player.
-
-
 				if (PingToggleCMD.enabled.get(player)) { // Check if player has turned on pings
-					
 					if (pinged.hasPermission("ping.red")) {
 						
-						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.RED + pinged.getName() + ChatColor.RESET);
+						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.RED + pinged.getName() + ChatColor.RESET); // Add @ to message and change ping name colour
 						event.setMessage(msg);
-					}
-					
-					else if (pinged.hasPermission("ping.yellow")) {
 						
-						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.YELLOW + pinged.getName() + ChatColor.RESET);
+					} else if (pinged.hasPermission("ping.yellow")) {
+						
+						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.YELLOW + pinged.getName() + ChatColor.RESET); // Add @ to message and change ping name colour
 						event.setMessage(msg);
 					} else {
 						
-						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.GREEN + pinged.getName() + ChatColor.RESET);
+						String msg = event.getMessage().replace("@" + pinged.getName(), ChatColor.GREEN + pinged.getName() + ChatColor.RESET); // Add @ to message and change ping name colour
 						event.setMessage(msg);
 					}
 					
@@ -45,7 +40,6 @@ public class ChatEventPing implements Listener {
 
 					return;
 				}
-
 			}
 		}
 	}
