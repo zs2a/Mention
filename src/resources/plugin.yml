@@ -1,0 +1,5 @@
+name: Mention
+version: '${project.version}'
+main: com.stan.plugin.mention.Exec
+api-version: 1.18
+description: Simple plugin that let's you ping players - just like in Discord!
