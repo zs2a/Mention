@@ -20,4 +20,5 @@ This can be helpful for staff members or other busy players on your server, this
 - [ ] Spam filter
 - [ ] Configurable messages in a separate file
 - [ ] Blacklist command
+- [ ] Update to latest version
 
