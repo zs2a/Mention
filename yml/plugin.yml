@@ -1,7 +1,0 @@
-main: dev.stan.plugin.Executor
-name: MentionPlugin
-author: dev-stan
-version: 1.0.2
-api-version: 1.16
-commands:
-  ping:  
